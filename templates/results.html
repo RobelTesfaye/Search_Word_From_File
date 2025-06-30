@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .result {
+            padding: 15px;
+            background: #fff;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .result strong {
+            color: #333;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1em;
+            color: #555;
+        }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results for "{{ search_string }}"</h1>
+        {% if results %}
+            <div class="results">
+                {% for result in results %}
+                    <div class="result">
+                        {{ result|safe }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No matching results found.</p>
+        {% endif %}
+        <a href="/">Go back</a>
+    </div>
+</body>
+</html>
